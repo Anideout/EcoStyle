@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0D7330D9-9239-D0DE-C547-D6E7B0C8FACF" name="Matricula">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E46A16C1-9440-9C18-62CC-DABDD24C0AA5" name="Notificaciones">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:20:49 UTC</createdTime>
+<createdTime>2025-05-20 09:28:59 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_matricula" id="26C86652-B482-F692-FA6B-A61361520C54">
+<Attribute name="id_notificacion" id="0A4F46D3-A53E-3A85-2786-5922A7444327">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:20:56 UTC</createdTime>
+<createdTime>2025-05-20 09:29:07 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -27,68 +27,64 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="fecha_inscripcion" id="E433BF7A-3EE5-EA0A-4C51-57124D27817D">
+<Attribute name="tipo" id="D3C365CB-65FF-642B-D905-BC5316A24FFE">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:20:56 UTC</createdTime>
+<createdTime>2025-05-20 09:29:07 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="progreso" id="5488462D-56DC-B322-DCE9-64DD233D82F0">
-<createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:20:56 UTC</createdTime>
-<ownerDesignName>modelamiento</ownerDesignName>
-<engineerTo>
-<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="estado" id="DBBF4696-ADB0-9200-F860-403E3FDA1D09">
-<createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:20:56 UTC</createdTime>
-<ownerDesignName>modelamiento</ownerDesignName>
-<engineerTo>
-<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>50</dataTypeSize>
-<ownDataTypeParameters>50,,</ownDataTypeParameters>
-</Attribute>
-<Attribute name="rut_usuario" id="1BAA1765-9C4A-4E17-E9F6-9DBEA1184509">
-<createdBy>matim</createdBy>
-<createdTime>2025-05-20 11:21:50 UTC</createdTime>
-<generatorID>DE8105F0-99CB-42DA-F0FE-D6887B44EEEA</generatorID>
-<ownerDesignName>modelamiento</ownerDesignName>
-<engineerTo>
-<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
-</engineerTo>
-<referedAttribute>0C64FA61-1307-96FA-7D7D-861EC825E329</referedAttribute>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<nullsAllowed>true</nullsAllowed>
+<use>0</use>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="curso_sigla" id="C49CA0A7-A112-2BDD-E0B3-C253DD7CB952">
+<Attribute name="mensaje" id="0C071C16-BB0E-C521-32AB-B5CDDD22B91E">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 11:21:59 UTC</createdTime>
-<generatorID>6D488AF8-4319-9D2B-74EC-F506386FCBDB</generatorID>
+<createdTime>2025-05-20 09:29:08 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
-<referedAttribute>E8CFA167-D641-6F3B-7CA4-1A3F7820D092</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_envio" id="89D87E6A-A612-A374-A4B2-C37155C22BF4">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:29:08 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="C56FBA58-CF51-E032-97B8-527DB6013D4C">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:29:08 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rut_usuario" id="F725E86E-20ED-49DA-553A-3FCF62B70AC6">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 11:28:18 UTC</createdTime>
+<generatorID>586CF462-8D1E-AFEF-DC71-F113034D26AD</generatorID>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<referedAttribute>8B1A829B-A90F-09BB-0C82-2BCA74F1C480</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
@@ -96,17 +92,16 @@
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="F885D9D7-2BBF-1A68-A8F4-FF9F7E879D00" name="Inscripcion PK">
+<identifier id="2E04429E-73B4-9778-D61B-6698DE2B3E62" name="Notificaciones PK">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:21:13 UTC</createdTime>
+<createdTime>2025-05-20 09:29:25 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>26C86652-B482-F692-FA6B-A61361520C54</attributeRef>
-<attributeRef>1BAA1765-9C4A-4E17-E9F6-9DBEA1184509</attributeRef>
+<attributeRef>0A4F46D3-A53E-3A85-2786-5922A7444327</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

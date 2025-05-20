@@ -78,6 +78,34 @@
 <logicalDatatype>LOGDT008</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
+<Attribute name="id_matricula" id="278A876B-7C4F-4436-C58D-BE8872EF26F7">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 11:22:45 UTC</createdTime>
+<generatorID>5D89EC0E-73D5-A9B7-B2DF-E63F5899696C</generatorID>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<referedAttribute>26C86652-B482-F692-FA6B-A61361520C54</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="rut_usuario" id="FC651B69-41AF-AB33-94BA-3F4E9D0D9010">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 11:22:45 UTC</createdTime>
+<generatorID>5D89EC0E-73D5-A9B7-B2DF-E63F5899696C</generatorID>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<referedAttribute>1BAA1765-9C4A-4E17-E9F6-9DBEA1184509</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
 <identifier id="9D411A0F-6F15-9CAC-1CE6-4F7AC8F853DA" name="Pagos PK">

@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E7DB9EF6-A4AB-E4AA-B888-615A3CCFFC1C" name="Roles">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="C4A522EB-AF27-E3C0-5DC4-04258C5A9987" name="Tajeta">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:47 UTC</createdTime>
+<createdTime>2025-05-20 10:54:06 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -15,9 +15,9 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_rol" id="CF15CABD-9508-00E3-ABC0-D26D4F44E54B">
+<Attribute name="numero_tarjeta" id="949FB4FE-3C38-E7B3-7E58-CD92AA7951E8">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:55 UTC</createdTime>
+<createdTime>2025-05-20 10:54:13 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -27,9 +27,9 @@
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_rol" id="B4521245-78B2-D696-6174-6587E653CE48">
+<Attribute name="titular" id="B0A90708-AAA4-EE92-C7E1-30965EA04150">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:55 UTC</createdTime>
+<createdTime>2025-05-20 10:54:13 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -40,31 +40,32 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="descripcion" id="D8BDE57F-7F2E-76B9-7B73-9E828BF70599">
+<Attribute name="rut_usuario" id="120DCC1B-CB4B-5CFA-AB78-CFE56C5F0B36">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:56 UTC</createdTime>
+<createdTime>2025-05-20 11:29:57 UTC</createdTime>
+<generatorID>5B816DE4-13F3-477E-3745-6002DE49834F</generatorID>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
+<referedAttribute>8B1A829B-A90F-09BB-0C82-2BCA74F1C480</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="2563C482-898C-2E10-734D-96A828820C6B" name="Roles PK">
+<identifier id="7C3EE927-A1EC-1D21-4AC8-5330F4B97F3A" name="Tajeta PK">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:19:14 UTC</createdTime>
+<createdTime>2025-05-20 10:54:34 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>CF15CABD-9508-00E3-ABC0-D26D4F44E54B</attributeRef>
+<attributeRef>949FB4FE-3C38-E7B3-7E58-CD92AA7951E8</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

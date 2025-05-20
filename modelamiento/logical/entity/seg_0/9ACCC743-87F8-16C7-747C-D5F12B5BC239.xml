@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E7DB9EF6-A4AB-E4AA-B888-615A3CCFFC1C" name="Roles">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="9ACCC743-87F8-16C7-747C-D5F12B5BC239" name="Asistencia">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:47 UTC</createdTime>
+<createdTime>2025-05-20 09:26:23 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -15,21 +15,21 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_rol" id="CF15CABD-9508-00E3-ABC0-D26D4F44E54B">
+<Attribute name="id_asistencia" id="68C6CB8B-9A1A-68E3-7FA2-B7FA6234D00C">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:55 UTC</createdTime>
+<createdTime>2025-05-20 09:26:29 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT011</logicalDatatype>
+<logicalDatatype>LOGDT021</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_rol" id="B4521245-78B2-D696-6174-6587E653CE48">
+<Attribute name="porcentaje" id="E5878CC4-06CC-BD5B-E41F-5D09E93F1285">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:55 UTC</createdTime>
+<createdTime>2025-05-20 09:26:29 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -40,31 +40,32 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="descripcion" id="D8BDE57F-7F2E-76B9-7B73-9E828BF70599">
+<Attribute name="rut_usuario" id="34A86752-0863-9205-DBB1-FCC39A03A352">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:56 UTC</createdTime>
+<createdTime>2025-05-20 11:25:23 UTC</createdTime>
+<generatorID>C07F5165-66D6-21CA-9012-EEA98D882449</generatorID>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
+<referedAttribute>0C64FA61-1307-96FA-7D7D-861EC825E329</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="2563C482-898C-2E10-734D-96A828820C6B" name="Roles PK">
+<identifier id="FBE75862-6FDD-2649-E666-0471ACB9404B" name="Asistencia PK">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:19:14 UTC</createdTime>
+<createdTime>2025-05-20 09:26:35 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>CF15CABD-9508-00E3-ABC0-D26D4F44E54B</attributeRef>
+<attributeRef>68C6CB8B-9A1A-68E3-7FA2-B7FA6234D00C</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>

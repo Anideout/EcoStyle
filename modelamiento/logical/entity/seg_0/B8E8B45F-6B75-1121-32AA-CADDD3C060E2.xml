@@ -1,7 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="E7DB9EF6-A4AB-E4AA-B888-615A3CCFFC1C" name="Roles">
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="B8E8B45F-6B75-1121-32AA-CADDD3C060E2" name="Profesor">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:47 UTC</createdTime>
+<createdTime>2025-05-20 09:29:52 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -15,21 +15,23 @@
 <minVolumes>0</minVolumes>
 <normalForm>Third</normalForm>
 <attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
-<Attribute name="id_rol" id="CF15CABD-9508-00E3-ABC0-D26D4F44E54B">
+<Attribute name="rut_usuario" id="1DD8A650-D017-1FE9-E2CC-A9A62B187495">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:55 UTC</createdTime>
+<createdTime>2025-05-20 11:12:41 UTC</createdTime>
+<generatorID>C51BB24A-D2CE-71B3-F908-C052E00CDBF4</generatorID>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
+<referedAttribute>8B1A829B-A90F-09BB-0C82-2BCA74F1C480</referedAttribute>
 <useDomainConstraints>false</useDomainConstraints>
 <use>1</use>
 <logicalDatatype>LOGDT011</logicalDatatype>
 <ownDataTypeParameters>,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="nombre_rol" id="B4521245-78B2-D696-6174-6587E653CE48">
+<Attribute name="especialidad" id="0BCBF840-DB53-992D-EB17-97C7D27CC63C">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:55 UTC</createdTime>
+<createdTime>2025-05-20 09:29:58 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
@@ -40,31 +42,18 @@
 <dataTypeSize>50</dataTypeSize>
 <ownDataTypeParameters>50,,</ownDataTypeParameters>
 </Attribute>
-<Attribute name="descripcion" id="D8BDE57F-7F2E-76B9-7B73-9E828BF70599">
-<createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:18:56 UTC</createdTime>
-<ownerDesignName>modelamiento</ownerDesignName>
-<engineerTo>
-<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
-</engineerTo>
-<useDomainConstraints>false</useDomainConstraints>
-<use>1</use>
-<logicalDatatype>LOGDT024</logicalDatatype>
-<dataTypeSize>100</dataTypeSize>
-<ownDataTypeParameters>100,,</ownDataTypeParameters>
-</Attribute>
 </attributes>
 <identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
-<identifier id="2563C482-898C-2E10-734D-96A828820C6B" name="Roles PK">
+<identifier id="9F575DA4-A090-1139-CD34-113213DBBD4B" name="Profesor PK">
 <createdBy>matim</createdBy>
-<createdTime>2025-05-20 09:19:14 UTC</createdTime>
+<createdTime>2025-05-20 09:30:01 UTC</createdTime>
 <ownerDesignName>modelamiento</ownerDesignName>
 <engineerTo>
 <item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
 </engineerTo>
 <pk>true</pk>
 <usedAttributes>
-<attributeRef>CF15CABD-9508-00E3-ABC0-D26D4F44E54B</attributeRef>
+<attributeRef>1DD8A650-D017-1FE9-E2CC-A9A62B187495</attributeRef>
 </usedAttributes>
 </identifier>
 </identifiers>
