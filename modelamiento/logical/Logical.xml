@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<LogicalDesign class="oracle.dbtools.crest.model.design.logical.LogicalDesign" name="Logical" id="C91615F5-BFEC-E4D7-4ABE-138999592753" mainViewID="B113670B-54EC-09C3-C122-4F1A0EC5EA14">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:12:08 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</LogicalDesign>

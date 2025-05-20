@@ -1,0 +1,84 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="0D7330D9-9239-D0DE-C547-D6E7B0C8FACF" name="Inscripcion">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:20:49 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_inscripcion" id="26C86652-B482-F692-FA6B-A61361520C54">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:20:56 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_inscripcion" id="E433BF7A-3EE5-EA0A-4C51-57124D27817D">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:20:56 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="progreso" id="5488462D-56DC-B322-DCE9-64DD233D82F0">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:20:56 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="DBBF4696-ADB0-9200-F860-403E3FDA1D09">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:20:56 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="F885D9D7-2BBF-1A68-A8F4-FF9F7E879D00" name="Inscripcion PK">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:21:13 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>26C86652-B482-F692-FA6B-A61361520C54</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

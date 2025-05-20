@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="modelamiento" id="F3258A41-89A6-D7F8-0EBF-CF798911C7BF" version="3.5">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:12:08 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>F3258A41-89A6-D7F8-0EBF-CF798911C7BF</designId>
+</OSDM_Design>

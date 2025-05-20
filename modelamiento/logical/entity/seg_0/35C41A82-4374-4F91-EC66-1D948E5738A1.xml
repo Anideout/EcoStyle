@@ -1,0 +1,96 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="35C41A82-4374-4F91-EC66-1D948E5738A1" name="Pagos">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:19:38 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="id_pago" id="81348331-D397-1C48-009A-7CC16680061F">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:19:51 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="monto" id="DC47E4CF-C5E2-C333-3F7D-5DD72E73EAEC">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:19:51 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="estado" id="4F12FE5F-BCE0-6FB4-CF15-CB42B1B46FE8">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:19:51 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>50</dataTypeSize>
+<ownDataTypeParameters>50,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="fecha_pago" id="99E0FEC7-B2D7-8090-7B4C-3BBE2296C527">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:19:52 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<nullsAllowed>true</nullsAllowed>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="metodo_pago" id="8059BBBD-9E02-609B-D21F-F6F384529442">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:19:52 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT008</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="9D411A0F-6F15-9CAC-1CE6-4F7AC8F853DA" name="Pagos PK">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:20:15 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<engineerTo>
+<item key="F1AD6EB0-5610-8999-F9D9-4C4609999A89" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>81348331-D397-1C48-009A-7CC16680061F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

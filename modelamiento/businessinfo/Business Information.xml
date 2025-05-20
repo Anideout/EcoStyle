@@ -1,0 +1,7 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BusinessInfoDesign class="oracle.dbtools.crest.model.businessinfo.BusinessInfoDesign" name="Business Information" id="54FA0DBA-54D7-33C7-89EB-65B5024E08DF">
+<createdBy>matim</createdBy>
+<createdTime>2025-05-20 09:12:09 UTC</createdTime>
+<ownerDesignName>modelamiento</ownerDesignName>
+<shouldBeOpen>false</shouldBeOpen>
+</BusinessInfoDesign>
