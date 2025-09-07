@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <title>Admin Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script href="assets/partials/navbar.html"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <div id="navbar-container"></div>
+
+    <main class="container py-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1 class="mb-0">Administración de productos</h1>
+            <button class="btn btn-success btn-sm" id="btnNuevo">+ Nuevo</button>
+        </div>
+
+        <div class="table-responsive">
+            <table class="table table-striped align-middle" id="tablaProductos">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Producto</th>
+                        <th>Precio</th>
+                        <th>Stock</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </main>
+
+    <div id="footer-container"></div>
+
+    <!-- Modal producto -->
+    <div class="modal fade" id="productoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Producto</h5>
+                </div>
+                <div class="modal-body">
+                    <form id="productoForm" novalidate>
+                        <input type="hidden" id="prodId">
+
+                        <div class="mb-3">
+                            <label class="form-label">Nombre</label>
+                            <input id="prodNombre" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Precio</label>
+                            <input id="prodPrecio" type="number" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Stock</label>
+                            <input id="prodStock" type="number" class="form-control" required>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Imagen (JPG/PNG, máx ~1MB)</label>
+                            <input id="prodImg" type="file" accept="image/*" class="form-control">
+                            <div class="form-text">Opcional. Si no subes, se usará una imagen por defecto.</div>
+                        </div>
+
+                        <div class="mb-2">
+                            <img id="prodPreview" src="" alt="Previsualización" class="img-fluid rounded border d-none">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-primary" id="btnGuardarProd">Guardar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/layout.js"></script>
+    <script>
+        const PROD_KEY = "APP_PRODS";
+        function getProds() { try { return JSON.parse(localStorage.getItem(PROD_KEY)) || []; } catch { return []; } }
+        function saveProds(p) { localStorage.setItem(PROD_KEY, JSON.stringify(p)); }
+
+        // ===== Imagen: lectura/compresión =====
+        let currentImgData = ""; // DataURL actual del modal
+
+        function readFileAsDataURL(file) {
+            return new Promise((res, rej) => {
+                const fr = new FileReader();
+                fr.onload = () => res(fr.result);
+                fr.onerror = rej;
+                fr.readAsDataURL(file);
+            });
+        }
+
+        // Reescala máximo 800px, calidad 0.85
+        async function compressImage(dataURL, maxSize = 800, mime = 'image/jpeg', quality = 0.85) {
+            return new Promise((res) => {
+                const img = new Image();
+                img.onload = () => {
+                    const scale = Math.min(maxSize / img.width, maxSize / img.height, 1);
+                    const w = Math.round(img.width * scale);
+                    const h = Math.round(img.height * scale);
+                    const canvas = document.createElement('canvas');
+                    canvas.width = w; canvas.height = h;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0, w, h);
+                    res(canvas.toDataURL(mime, quality));
+                };
+                img.src = dataURL;
+            });
+        }
+
+        function renderTabla() {
+            const prods = getProds();
+            const $tbody = $("#tablaProductos tbody").empty();
+            prods.forEach((p, i) => {
+                const thumb = p.img || `https://picsum.photos/seed/prod${p.id}/60/40`;
+                $tbody.append(`
+          <tr>
+            <td>${i + 1}</td>
+            <td class="d-flex align-items-center gap-2">
+              <img src="${thumb}" style="width:60px;height:40px;object-fit:cover;border-radius:6px;border:1px solid #ddd">
+              <span>${p.nombre}</span>
+            </td>
+            <td>$${p.precio}</td>
+            <td>${p.stock}</td>
+            <td>
+              <button class="btn btn-sm btn-primary editar" data-id="${p.id}">Editar</button>
+              <button class="btn btn-sm btn-danger eliminar" data-id="${p.id}">Eliminar</button>
+            </td>
+          </tr>
+        `);
+            });
+        }
+
+        $(function () {
+            // Guards
+            const user = AuthStore.getCurrentUser();
+            if (!user) { location.href = "login.html"; return; }
+            if (user.role !== "admin") { location.href = "index.html"; return; }
+
+            Layout.loadPartials();
+            renderTabla();
+
+            // Nuevo
+            $("#btnNuevo").on("click", () => {
+                $("#prodId").val("");
+                $("#prodNombre, #prodPrecio, #prodStock").val("");
+                $("#prodImg").val("");
+                currentImgData = "";
+                $("#prodPreview").attr("src", "").addClass("d-none");
+                new bootstrap.Modal("#productoModal").show();
+            });
+
+            // Cargar imagen
+            $("#prodImg").on("change", async function () {
+                const file = this.files[0];
+                if (!file) return;
+                if (!/image\/(png|jpeg|jpg)/i.test(file.type)) { alert("Sube JPG o PNG"); this.value = ""; return; }
+                if (file.size > 1.2 * 1024 * 1024) { /* aviso, se comprime igual */ }
+                try {
+                    const raw = await readFileAsDataURL(file);
+                    currentImgData = await compressImage(raw, 800, 'image/jpeg', 0.85);
+                    $("#prodPreview").attr("src", currentImgData).removeClass("d-none");
+                } catch (e) { console.warn(e); alert("No se pudo leer la imagen."); }
+            });
+
+            // Guardar
+            $("#btnGuardarProd").on("click", () => {
+                const id = $("#prodId").val();
+                const prods = getProds();
+                if (id) {
+                    const idx = prods.findIndex(p => String(p.id) === String(id));
+                    prods[idx].nombre = $("#prodNombre").val();
+                    prods[idx].precio = $("#prodPrecio").val();
+                    prods[idx].stock = $("#prodStock").val();
+                    if (currentImgData) prods[idx].img = currentImgData; // reemplaza solo si subió nueva
+                } else {
+                    prods.push({
+                        id: Date.now(),
+                        nombre: $("#prodNombre").val(),
+                        precio: $("#prodPrecio").val(),
+                        stock: $("#prodStock").val(),
+                        img: currentImgData || ""
+                    });
+                }
+                saveProds(prods);
+                renderTabla();
+                bootstrap.Modal.getInstance(document.getElementById("productoModal")).hide();
+            });
+
+            // Editar
+            $(document).on("click", ".editar", function () {
+                const p = getProds().find(x => String(x.id) === String($(this).data("id")));
+                $("#prodId").val(p.id);
+                $("#prodNombre").val(p.nombre);
+                $("#prodPrecio").val(p.precio);
+                $("#prodStock").val(p.stock);
+                $("#prodImg").val("");
+                currentImgData = "";
+                if (p.img) { $("#prodPreview").attr("src", p.img).removeClass("d-none"); }
+                else { $("#prodPreview").attr("src", "").addClass("d-none"); }
+                new bootstrap.Modal("#productoModal").show();
+            });
+
+            // Eliminar
+            $(document).on("click", ".eliminar", function () {
+                let prods = getProds().filter(x => String(x.id) !== String($(this).data("id")));
+                saveProds(prods);
+                renderTabla();
+            });
+        });
+    </script>
+</body>
+
+</html>
