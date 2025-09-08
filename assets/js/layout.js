@@ -19,7 +19,6 @@
     }
     //resaltar el enlace activo de navegacion
     function markActiveNavLink() {
-
         try {
             //obtenemos el path de la url. tolowercase para evitar problemas con mayusculas
             const here = (location.pathname.split('/').pop() || 'index.html').toLowerCase();
@@ -39,36 +38,30 @@
         const nameEl = document.getElementById('navUserName');
         const logoutBtn = document.getElementById('logout');
         const adminEls = document.querySelectorAll('.admin-only');
+        const userEls = document.querySelectorAll('.user-only');
         const cartCountEl = document.getElementById('cartCount');
 
+        // Usuario y rol
         if (user) {
-            if (nameEl) nameEl.textContent = `${user.name}`;
-            // Solo mostramos elementos admin si el usuario es admin
+            if (nameEl) nameEl.textContent = `${user.name} (${user.role})`;
             if (user.role === 'admin') {
-                adminEls.forEach(el => el.style.display = 'block');
+                adminEls.forEach(el => el.classList.remove('d-none'));
+                userEls.forEach(el => el.classList.add('d-none'));
             } else {
-                adminEls.forEach(el => el.style.display = 'none');
-            }
-
-            // Configurar el botón de logout
-            if (logoutBtn) {
-                logoutBtn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    if (window.AuthStore && window.AuthStore.logout) {
-                        window.AuthStore.logout();
-                    }
-                    window.location.href = 'login.html';
-                });
+                adminEls.forEach(el => el.classList.add('d-none'));
+                userEls.forEach(el => el.classList.remove('d-none'));
             }
         } else {
             if (nameEl) nameEl.textContent = 'Invitado';
-            adminEls.forEach(el => el.style.display = 'none');
-            // Solo redirigir a login si NO estamos en carrito.html
-            const here = (location.pathname.split('/').pop() || '').toLowerCase();
-            if (here !== 'carrito.html') {
-                window.location.href = 'login.html';
+            adminEls.forEach(el => el.classList.add('d-none'));
+            userEls.forEach(el => el.classList.add('d-none'));
+            if (logoutBtn) {
+                logoutBtn.classList.add('disabled');
+                logoutBtn.setAttribute('tabindex', '-1');
+                logoutBtn.setAttribute('aria-disabled', 'true');
             }
         }
+
         //carrito
         if (cartCountEl) cartCountEl.textContent = String(getCartCount());
 
@@ -94,13 +87,12 @@
         });
     }
     //helper para intentar dos rutas (assets/partials/... y partials/...)
-
-    function LoadWithFallBack($startget, pathA, pathB, after) {
-        $startget.load(pathA, function (response, status) {
-            if (status == "error") {
-                $startget.load(pathB, function (response2, status2) {
+    function LoadWithFallBack($target, pathA, pathB, after) {
+        $target.load(pathA, function (response, status) {
+            if (status === "error") {
+                $target.load(pathB, function (response2, status2) {
                     if (status2 === 'error') {
-                        $startget.html('<div class="alert alert-danger m-8">No se pudo cargar el contenido.</div>');
+                        $target.html('<div class="alert alert-danger m-8">No se pudo cargar el contenido.</div>');
                     } else {
                         after && after();
                     }
@@ -117,7 +109,6 @@
         //validacion de existencia
         if ($navTarget.length) {
             LoadWithFallBack($navTarget,
-
                 'assets/partials/navbar.html',
                 'partials/navbar.html',
                 initNavbarLogic
@@ -136,7 +127,7 @@
         }
     }
 
-    window.layout = {
+    window.Layout = {
         LoadPartials,
         getCartCount
     };

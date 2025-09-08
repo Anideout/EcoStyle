@@ -73,6 +73,8 @@
     <script src="assets/js/auth.js"></script>
     <script src="assets/js/layout.js"></script>
     <script>
+        window.Layout.LoadPartials();
+
         function getUsers() { return JSON.parse(localStorage.getItem('APP_USERS')) || []; }
         function saveUsers(u) { localStorage.setItem('APP_USERS', JSON.stringify(u)); }
 
@@ -99,7 +101,6 @@
             const user = AuthStore.getCurrentUser();
             if (!user) { location.href = "login.html"; return; }
             if (user.role !== "admin") { location.href = "index.html"; return; }
-            Layout.loadPartials();
 
             renderUsuarios();
 

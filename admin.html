@@ -34,7 +34,7 @@
         </div>
     </main>
 
-    <div id="footer-container"></div>
+   
 
     <!-- Modal producto -->
     <div class="modal fade" id="productoModal" tabindex="-1" aria-hidden="true">
@@ -80,6 +80,7 @@
             </div>
         </div>
     </div>
+     <div id="footer-container"></div>
 
     <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
@@ -87,6 +88,8 @@
     <script src="assets/js/auth.js"></script>
     <script src="assets/js/layout.js"></script>
     <script>
+        window.Layout.LoadPartials();
+
         const PROD_KEY = "APP_PRODS";
         function getProds() { try { return JSON.parse(localStorage.getItem(PROD_KEY)) || []; } catch { return []; } }
         function saveProds(p) { localStorage.setItem(PROD_KEY, JSON.stringify(p)); }
@@ -150,7 +153,6 @@
             if (!user) { location.href = "login.html"; return; }
             if (user.role !== "admin") { location.href = "index.html"; return; }
 
-            Layout.loadPartials();
             renderTabla();
 
             // Nuevo

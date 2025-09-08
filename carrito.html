@@ -50,7 +50,7 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
         <script src="assets/js/auth.js"></script>
-        <script src="assets/js/layout.js"></script>
+        <script src="assets/js/Layout.js"></script>
         <script>
             const CART_KEY = 'APP_CART';
             const PROD_KEY = 'APP_PRODS';
@@ -129,7 +129,7 @@
                 // proteger página (ambos roles pueden comprar)
                 const user = AuthStore.getCurrentUser();
                 if (!user) { location.href = 'login.html'; return; }
-                if (window.layout && window.layout.LoadPartials) window.layout.LoadPartials();
+                if (window.Layout && window.Layout.LoadPartials) window.Layout.LoadPartials();
                 renderCarrito();
                 // Vaciar
                 $('#btnVaciar').on('click', () => {

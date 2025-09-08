@@ -23,15 +23,17 @@
                     <li class="nav-item">
                         <a class="nav-link" href="catalogo.html">Catalogo</a>
                     </li>
-                    <li class="nav-item dropdown">
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html" id="logout">Cerrar Sesión</a>
+                    </li>
+                    <li class="nav-item dropdown admin-only">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Más opciones
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-dark">
-                            <li><a class="dropdown-item" href="perfil.html">Perfil</a></li>
-                            <li class="admin-only"><a class="dropdown-item" href="admin_usuarios.html">Perfil |
-                                    Admin</a></li>
+                        <ul class="dropdown-menu dropdown-menu-dark ">
+                            <li><a class="dropdown-item " href="admin.html">Producto | Admin</a></li>
+                            <li><a class="dropdown-item " href="admin_usuarios.html">Usuarios | Admin</a></li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -39,6 +41,7 @@
                         </ul>
                     </li>
                 </ul>
+                
                 <form class="d-flex mt-3" role="search">
                     <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
                     <button class="btn btn-outline-light" type="submit">Search</button>
