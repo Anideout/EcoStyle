@@ -63,8 +63,11 @@
         } else {
             if (nameEl) nameEl.textContent = 'Invitado';
             adminEls.forEach(el => el.style.display = 'none');
-            // Redirigir a login si no hay usuario
-            window.location.href = 'login.html';
+            // Solo redirigir a login si NO estamos en carrito.html
+            const here = (location.pathname.split('/').pop() || '').toLowerCase();
+            if (here !== 'carrito.html') {
+                window.location.href = 'login.html';
+            }
         }
         //carrito
         if (cartCountEl) cartCountEl.textContent = String(getCartCount());

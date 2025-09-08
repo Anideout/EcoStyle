@@ -44,14 +44,12 @@
     <script src="assets/js/auth.js"></script>
     <script src="assets/js/layout.js"></script>
     <script>
+
         function genOrderNumber() {
-            // formato simple: AAA-123456 (aleatorio)
-            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-            const A = letters[Math.floor(Math.random() * 26)];
-            const B = letters[Math.floor(Math.random() * 26)];
-            const C = letters[Math.floor(Math.random() * 26)];
-            const num = String(Math.floor(Math.random() * 900000) + 100000);
-            return `${A}${B}${C}-${num}`;
+            // 10 dígitos aleatorios
+            let n = '';
+            for (let i = 0; i < 10; i++) n += Math.floor(Math.random() * 10);
+            return n;
         }
 
         $(function () {
