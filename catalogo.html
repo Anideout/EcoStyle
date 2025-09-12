@@ -1,93 +1,244 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>Cat├ílogo | Mi Tienda</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Catálogo de Plantas - EcoStyle</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="styles/layout.css">
+    <link rel="stylesheet" href="styles/catalogo.css">
+
 </head>
 <body>
-  <div id="navbar-container"></div>
+    <div id="navbar-container"></div>
 
-  <main class="container py-5">
-    <div class="d-flex justify-content-between align-items-center mb-4">
-      <h1 class="mb-0">Cat├ílogo</h1>
-      <a class="btn btn-outline-secondary btn-sm" href="index.html">Volver al inicio</a>
-    </div>
-
-    <div id="catalogInfo" class="alert alert-info d-none"></div>
-    <div class="row g-4" id="catalogoGrid"></div>
-  </main>
-
-  <div id="footer-container"></div>
-
-  <!-- Scripts -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/auth.js"></script>
-  <script src="assets/js/layout.js"></script>
-  <script>
-    const PROD_KEY = "APP_PRODS";
-    const CART_KEY = "APP_CART";
-    const fmt = new Intl.NumberFormat('es-CL', { style:'currency', currency:'CLP', maximumFractionDigits:0 });
-
-    function getProds(){ try { return JSON.parse(localStorage.getItem(PROD_KEY))||[]; } catch { return []; } }
-    function getCart(){ try { return JSON.parse(localStorage.getItem(CART_KEY))||[]; } catch { return []; } }
-    function saveCart(c){ localStorage.setItem(CART_KEY, JSON.stringify(c)); window.dispatchEvent(new CustomEvent('cart:updated')); }
-
-    function renderCatalogo(){
-      const prods = getProds();
-      const $grid = $('#catalogoGrid').empty();
-      const $info = $('#catalogInfo');
-
-      if(!prods.length){
-        $info.removeClass('d-none').text('A├║n no hay productos. A├▒├ídelos en el panel de administraci├│n.');
-        return;
-      } else {
-        $info.addClass('d-none').text('');
-      }
-
-      prods.forEach(p=>{
-        const price = Number(p.precio)||0;
-        const imgSrc = p.img || `https://picsum.photos/seed/prod${p.id}/600/400`;
-        $grid.append(`
-          <div class="col-12 col-sm-6 col-lg-4">
-            <div class="card h-100">
-              <img src="${imgSrc}" class="card-img-top" alt="${p.nombre}">
-              <div class="card-body d-flex flex-column">
-                <h5 class="card-title">${p.nombre}</h5>
-                <p class="text-muted small">Stock: ${p.stock}</p>
-                <p class="mb-3">Precio: <strong>${fmt.format(price)}</strong></p>
-                <div class="mt-auto d-flex justify-content-between align-items-center">
-                  <a class="btn btn-outline-secondary btn-sm" href="carrito.html">Ver carrito</a>
-                  <button class="btn btn-primary btn-sm addToCart" data-id="${p.id}" data-name="${p.nombre}" data-price="${price}">Agregar</button>
-                </div>
-              </div>
+    <main>
+        <div class="header-catalogo">
+            <div class="container">
+                <h1 class="display-5 fw-bold mb-2">Catálogo de Plantas</h1>
+                <p class="lead fs-5">Elige la planta perfecta</p>
             </div>
-          </div>
-        `);
-      });
+        </div>
+
+        <div class="container">
+            <div class="row mb-4">
+                <div class="col-12">
+                    <div class="filter-section">
+                        <div class="row align-items-center">
+                            <div class="col-md-6">
+                                <h5 class="mb-0">Filtrar plantas:</h5>
+                            </div>
+                            <div class="col-md-6 text-end">
+                                <div class="btn-group">
+                                    <button id="btn-todas" class="btn btn-outline-success">Todas</button>
+                                    <button id="btn-disponibles" class="btn btn-outline-success">Disponibles</button>
+                                    <button id="btn-ofertas" class="btn btn-outline-success">Ofertas</button>
+                                    <button id="btn-agregar-producto" class="btn btn-success admin-only d-none">
+                                        <i class="fas fa-plus"></i> Agregar Producto
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row g-4">
+
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card plant-card h-100 disponible">
+                        <span class="disponibilidad badge bg-success">Disponible</span>
+                        <img src="images/monstera2.jpg" class="card-img-top plant-image" alt="Monstera Deliciosa">
+                        <div class="precio-body">
+                            <h5 class="card-title">Monstera Deliciosa</h5>
+                            <p class="text-muted">Planta tropical de hojas perforadas</p>
+                            <ul class="plant-features">
+                                <li><i class="fas fa-sun"></i> Luz indirecta</li>
+                                <li><i class="fas fa-tint"></i> Riego moderado</li>
+                                <li><i class="fas fa-ruler-combined"></i> Altura: 1.5m</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-tag">$24.990</span>
+                                <button class="planta-btn" onclick="addToCart('Monstera', 'Monstera Deliciosa', 24990)">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card carta-planta h-100 disponible oferta">
+                        <span class="availability-badge badge bg-success">Disponible</span>
+                        <img src="images/sansevieria-trifasciata.jpg" class="card-img-top plant-image" alt="Sansevieria">
+                        <div class="card-body">
+                            <h5 class="card-title">Sansevieria Trifasciata</h5>
+                            <p class="text-muted">Lengua de tigre - Purificadora de aire</p>
+                            <ul class="plant-features">
+                                <li><i class="fas fa-sun"></i> Luz baja a media</li>
+                                <li><i class="fas fa-tint"></i> Riego escaso</li>
+                                <li><i class="fas fa-ruler-combined"></i> Altura: 0.8m</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <span class="price-tag text-decoration-line-through text-muted">$18.500</span>
+                                    <span class="price-tag text-success">$15.725</span>
+                                    <span class="badge bg-danger">-15%</span>
+                                </div>
+                                <button class="btn btn-plant" onclick="addToCart('sansevieria', 'Sansevieria Trifasciata', 15725)">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card plant-card h-100 oferta">
+                        <span class="availability-badge badge bg-warning text-dark">Últimas unidades</span>
+                        <img src="images/Poto-dorado.jpg" class="card-img-top plant-image" alt="Poto">
+                        <div class="card-body">
+                            <h5 class="card-title">Poto Dorado</h5>
+                            <p class="text-muted">Planta colgante de fácil cuidado</p>
+                            <ul class="plant-features">
+                                <li><i class="fas fa-sun"></i> Sombra parcial</li>
+                                <li><i class="fas fa-tint"></i> Riego regular</li>
+                                <li><i class="fas fa-ruler-combined"></i> Largo: 2m</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <div>
+                                    <span class="price-tag text-decoration-line-through text-muted">$15.990</span>
+                                    <span class="price-tag text-success">$13.590</span>
+                                    <span class="badge bg-danger">-15%</span>
+                                </div>
+                                <button class="btn btn-plant" onclick="addToCart('poto', 'Poto Dorado', 13590)">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card plant-card h-100 disponible">
+                        <span class="availability-badge badge bg-success">Disponible</span>
+                        <img src="images/alocasia-polly.jpg" class="card-img-top plant-image" alt="Alocasia">
+                        <div class="card-body">
+                            <h5 class="card-title">Alocasia Polly</h5>
+                            <p class="text-muted">Planta ornamental de hojas grandes</p>
+                            <ul class="plant-features">
+                                <li><i class="fas fa-sun"></i> Luz brillante indirecta</li>
+                                <li><i class="fas fa-tint"></i> Alta humedad</li>
+                                <li><i class="fas fa-ruler-combined"></i> Altura: 0.6m</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-tag">$32.500</span>
+                                <button class="btn btn-plant">
+                                    <i class="fas fa-cart-plus"></i> Agregar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card plant-card h-100 agotado">
+                        <span class="availability-badge badge bg-danger">Agotado</span>
+                        <img src="images/schlumbergera-truncata.jpg" class="card-img-top plant-image" alt="Cactus">
+                        <div class="card-body">
+                            <h5 class="card-title">Schlumbergera Truncata</h5>
+                            <p class="text-muted">Una planta muy apreciada por su belleza</p>
+                            <ul class="plant-features">
+                                <li><i class="fas fa-sun"></i> Pleno sol</li>
+                                <li><i class="fas fa-tint"></i> Riego escaso</li>
+                                <li><i class="fas fa-ruler-combined"></i> Varias alturas</li>
+                            </ul>
+                            <div class="d-flex justify-content-between align-items-center mt-3">
+                                <span class="price-tag">$21.990</span>
+                                <button class="btn btn-plant" disabled>
+                                    <i class="fas fa-cart-plus"></i> Agotado
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+      <div id="footer-container"></div>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/auth.js"></script>
+    <script src="assets/js/layout.js"></script>
+    <script>
+        $(document).ready(function() {
+            window.Layout.LoadPartials();
+        });
+    </script>
+    <script>
+    function addToCart(id, name, price) {
+        const cartKey = 'APP_CART';
+        let cart = JSON.parse(localStorage.getItem(cartKey) || '[]');
+        
+        // Obtener la imagen de la tarjeta de la planta
+        const plantCard = document.querySelector(`.card:has(button[onclick*="'${id}'"])`);
+        const imgSrc = plantCard ? plantCard.querySelector('img').src : '';
+        
+        // Buscar si el producto ya está en el carrito
+        const existingItem = cart.find(item => item.id === id);
+        
+        if (existingItem) {
+            existingItem.qty = (existingItem.qty || 1) + 1;
+        } else {
+            cart.push({
+                id: id,
+                name: name,
+                price: price,
+                qty: 1,
+                img: imgSrc
+            });
+        }
+        
+        localStorage.setItem(cartKey, JSON.stringify(cart));
+        // Actualizar el contador del carrito
+        window.dispatchEvent(new Event('cart:update'));
+        
+        // Mostrar mensaje de éxito
+        alert('Producto agregado al carrito');
     }
 
-    $(function(){
-      // Guard: obliga a login si entran directo por URL
-      const user = AuthStore.getCurrentUser();
-      if(!user){ location.href='login.html'; return; }
+    $(document).ready(function() {
+        // Filtro de plantas
+        $('#btn-todas').click(function() {
+            $('.plant-card, .carta-planta').parent().show();
+        });
+        $('#btn-disponibles').click(function() {
+            $('.plant-card, .carta-planta').parent().hide();
+            $('.disponible').parent().show();
+        });
+        $('#btn-ofertas').click(function() {
+            $('.plant-card, .carta-planta').parent().hide();
+            $('.oferta').parent().show();
+        });
 
-      Layout.loadPartials();
-      renderCatalogo();
+        // Botón de agregar producto (solo admin)
+        $('#btn-agregar-producto').click(function() {
+            if (window.AuthStore && window.AuthStore.getCurrentUser().role === 'admin') {
+                window.location.href = 'admin.html#agregar-producto';
+            }
+        });
 
-      $(document).on('click', '.addToCart', function(){
-        const id = Number($(this).data('id'));
-        const name = $(this).data('name');
-        const price = Number($(this).data('price'))||0;
-        const cart = getCart();
-        const found = cart.find(i=>i.id===id);
-        if(found){ found.qty = (found.qty||1)+1; }
-        else { cart.push({id, name, price, qty:1}); }
-        saveCart(cart);
-      });
+        // Agregar onclick a los botones de agregar que faltan
+        $('.plant-card:not(:has([onclick])) .btn-plant:not([disabled])').each(function() {
+            const card = $(this).closest('.plant-card');
+            const name = card.find('.card-title').text();
+            const priceText = card.find('.price-tag').last().text();
+            const price = parseInt(priceText.replace(/[^0-9]/g, ''));
+            const id = name.toLowerCase().replace(/\s+/g, '-');
+            
+            $(this).attr('onclick', `addToCart('${id}', '${name}', ${price})`);
+        });
     });
-  </script>
+    </script>
 </body>
 </html>
+
+
+
